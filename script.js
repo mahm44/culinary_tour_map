@@ -5,8 +5,8 @@ mapboxgl.accessToken = 'pk.eyJ1IjoibWFobSIsImEiOiJjbHJiaTVkanowb3lzMndwcnYwN3Zle
 const map = new mapboxgl.Map({
     container: 'map', // container id in HTML
     style: 'mapbox://styles/mahm/cltrpoijj013901p5fpqob5wf',  // map style 
-    center: [-79.39, 43.65],  // starting point, longitude/latitude
-    zoom: 12.5 // starting zoom level
+    center: [-79.39, 43.655],  // starting point, longitude/latitude
+    zoom: 13.5 // starting zoom level
 })
 
 
@@ -391,13 +391,13 @@ button.addEventListener("click", function () {
     if (btnStatus !== true){
         // make price legend, sentiment legend and sentiment layer checkboxes appear 
         // hide cusisines legend and checkboxes 
-        priceLegend.style.display = 'block';
+        priceLegend.style.display = 'none';
         sentLegend.style.display = 'block';
         cuisineLegend.style.display = 'none';
         cuisineBoxDisplay.style.display = 'none';
         sentBoxDisplay.style.display = 'block';
         // make price rating hexgrid appear 
-        map.setLayoutProperty('pricehex-layer', 'visibility', 'visible')
+        map.setLayoutProperty('pricehex-layer', 'visibility', 'none')
         // turn off cuisine layers 
         for (const layerID of cuisineLayers) {
                 const layer = map.getLayer(layerID); // this line may be useless 
@@ -558,7 +558,7 @@ mapLayers.forEach(layer => {
             .setLngLat(e.lngLat) // method uses coordinates of mouse click to display popup at 
             // show restaurant name, food, service and atmosphere rating, price rating and cuisine in popup 
             // once mouse clicks a point 
-            .setHTML("<b>Restaurant:</b> " + e.features[0].properties.Name + "<br>" + "<b>Food: </b>" + e.features[0].properties.foodRating + "<br>" + "<b>Service: </b> " + e.features[0].properties.serviceRating + "<br>" + "<b>Atmosphere: </b> " + e.features[0].properties.atmosphereRating + "<br>" + "<b>Price: </b>" + e.features[0].properties.priceRating + "<br>" + "<b>Cuisine: </b>" + e.features[0].properties.Cuisine)
+            .setHTML("<b>Restaurant:</b> " + e.features[0].properties.Name + "<br>" + "<b>Food: </b>" + e.features[0].properties.foodRating + "<br>" + "<b>Service: </b> " + e.features[0].properties.serviceRating + "<br>" + "<b>Atmosphere: </b> " + e.features[0].properties.atmosphereRating + "<br>" + "<b>Price Index (0-4): </b>" + e.features[0].properties.priceRating + "<br>" + "<b>Cuisine: </b>" + e.features[0].properties.Cuisine)
             .addTo(map); //Show popup on map
     });
 });
@@ -578,7 +578,7 @@ sentMapLayers.forEach(layer => {
         new mapboxgl.Popup() // upon clicking, declare a popup object 
             .setLngLat(e.lngLat) // method uses coordinates of mouse click to display popup at 
             // display restaurant name and cuisine and price rating on click 
-            .setHTML("<b>Restaurant:</b> " + e.features[0].properties.Name + "<br>" + "<b>Cuisine: </b>" + e.features[0].properties.Cuisine + "<br>" + "<b>Price: </b>" + e.features[0].properties.priceRating)
+            .setHTML("<b>Restaurant:</b> " + e.features[0].properties.Name + "<br>" + "<b>Food: </b>" + e.features[0].properties.foodRating + "<br>" + "<b>Service: </b> " + e.features[0].properties.serviceRating + "<br>" + "<b>Atmosphere: </b> " + e.features[0].properties.atmosphereRating + "<br>" + "<b>Price Index (0-4): </b>" + e.features[0].properties.priceRating + "<br>" + "<b>Cuisine: </b>" + e.features[0].properties.Cuisine)
             .addTo(map); //Show popup on map
     });
 });
