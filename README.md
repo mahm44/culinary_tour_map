@@ -1,4 +1,4 @@
-# GGR472 Group Project: Toronto Culinary Tourism Map
+# Toronto Culinary Tourism Map
 This repository contains the code and resources used to make our Toronto Culinary Tourism Map, a web map that highlights the diverse culinary landscape of downtown Toronto.
 
 ## Repository Contents
